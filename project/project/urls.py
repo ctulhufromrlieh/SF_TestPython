@@ -17,10 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from django.views.generic.base import RedirectView
+
 from app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', RedirectView.as_view(url='file_form', permanent=False)),
     path('file_form', file_form_view, name='file_form'),
     path('search_form', search_form_view, name='search_form'),
+    path('clear', clear_view, name='clear'),
 ]

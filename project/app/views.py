@@ -2,11 +2,6 @@ from django.shortcuts import render, redirect
 
 from .forms import *
 
-# def handle_uploaded_file(file):
-#         with open(args[1], 'r') as file:
-#             file_content = file.read()
-#             words = file_content.split(" ")
-
 def get_word_count_of_file(file, search_word):
     # print("file = ", file)
     # print("type(file)=", type(file))
@@ -57,3 +52,11 @@ def search_form_view(request):
         'search_word': wf.search_word,
         'word_count': wf.word_count,
     })
+
+def clear_view(request):
+    wf = WordFile.objects.first()
+    wf.file = None
+    wf.word_count = -1
+    wf.save()
+
+    return redirect('file_form')

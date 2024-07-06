@@ -8,6 +8,6 @@ from django.db import models
 #         return self.value.name
 
 class WordFile(models.Model):
-    file = models.FileField()
+    file = models.FileField(blank=True, null=True)
     search_word = models.CharField(max_length=255, default="")
     word_count = models.IntegerField(default=-1)
