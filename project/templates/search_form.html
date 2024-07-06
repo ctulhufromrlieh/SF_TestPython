@@ -1,0 +1,12 @@
+{% extends 'default.html' %}
+
+{% block content %}
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+    {% if word_count > -1 %}
+    Word count of {{search_word}} is {{ word_count }}
+    {% endif %}
+  </form>
+{% endblock %}
